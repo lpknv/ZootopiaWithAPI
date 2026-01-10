@@ -70,8 +70,15 @@ def output_animal_html_file(template_path, output_path, replacements):
             file.write(html)
 
         print("Website was successfully generated to the file animals.html!")
-    except:
-        print("Could not generate file animals.html!")
+        
+    except FileNotFoundError as e:
+        print(f"Template file not found: {e}")
+
+    except PermissionError as e:
+        print(f"Permission error: {e}")
+
+    except OSError as e:
+        print(f"File system error: {e}")
 
 
 def main():
